@@ -1,0 +1,16 @@
+name: Compila APK Android
+on: [push] # Si attiva ogni volta che salvi qualcosa
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del codice
+      uses: actions/checkout@v4
+
+    - name: Compilazione APK con Buildozer
+      uses: ArtemSBulgakov/buildozer-action@v3
+      with:
+        command: buildozer android debug
+        repository_root: .
